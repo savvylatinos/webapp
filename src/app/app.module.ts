@@ -46,7 +46,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { Component, Inject} from '@angular/core';
 import { RegisterComponent } from './components/index.paginas';
 import { ToastrModule } from 'ngx-toastr';
-import { MyquotesComponent } from './components/myquotes/myquotes.component';
 import { AccountComponent } from './components/account/account.component';
 import { LoginComponent } from './components/login/login.component';
 import { SLlcComponent } from './components/s-llc/s-llc.component';
@@ -56,7 +55,6 @@ import { SLlcComponent } from './components/s-llc/s-llc.component';
     TestappComponent,
     HeaderComponent,
     RegisterComponent,
-    MyquotesComponent,
     AccountComponent,
     LoginComponent,
     SLlcComponent

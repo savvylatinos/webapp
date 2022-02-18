@@ -2,7 +2,6 @@ import {RouterModule,Routes} from '@angular/router';
 import {
 	TestappComponent,
 	RegisterComponent,
-	MyquotesComponent,
 	AccountComponent,
 //	FruittopbarComponent,
 	}from "./components/index.paginas";
@@ -11,7 +10,6 @@ import {
 const app_routes: Routes = [
 	{path:'',component:TestappComponent},
 	{path:'register',component:RegisterComponent},
-	{path:'myquotes',component:MyquotesComponent,canActivate:[AuthGuard]},
 	{path:'account',component:AccountComponent,canActivate:[AuthGuard]},
 	{path:'**',pathMatch:'full',redirectTo:''}
 	];
