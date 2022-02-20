@@ -40,17 +40,18 @@
                         <div class="right">
                             <div class="main-menu__right">
                                 <div class="main-menu__right-cart-search">
-                                    <div class="main-menu__right-cart-box">
+                                    <div class="main-menu__right-cart-box" [hidden]="router.url.includes('/login')">
                                         <!-- <a routerLink="register">
                                             <span class="icon-user"></span></a> -->
                                             <a  style="color:#EA0086; cursor: pointer;" [hidden]="!_uw.isLogged" (click)="onLogout()">
                                                 <i class="fa fa-sign-out-alt" style="color:#EA0086;"></i> Logout
                                             </a>
-                                            <a  style="color:#EA0086; cursor: pointer;" [hidden]="_uw.isLogged"     routerLink="/register">
+                                            <a  style="color:#EA0086; cursor: pointer;" [hidden]="_uw.isLogged"     routerLink="/login">
                                                 <i class="fa fa-user" style="color:#EA0086;"></i> Login
                                             </a>
+                                           
                                     </div>
-                                    <div [hidden]="_uw.isLogged"class="main-menu__right-search-box" >
+                                    <div [hidden]="_uw.isLogged || router.url.includes('/register')"class="main-menu__right-search-box" >
                                         <a routerLink="register" class="thm-btn search-toggler">CREAR EMPRESA</a>
                                     </div>
                                 </div>

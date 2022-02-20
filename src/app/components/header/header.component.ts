@@ -17,11 +17,12 @@ export class HeaderComponent implements OnInit {
   public scrollTopService:ScrollTopService,
   public _uw:UserWService,
   private dataApi: DataApiService,
-  public authService: AuthService
+  public authService: AuthService,
+  public router:Router,
+  public location:Location
      ) { }
      public tixs:TixInterface;
-     public router:Router
-    public location:Location
+
   ngOnInit() {
     this.onCheckUser();
   }
