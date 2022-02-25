@@ -29,6 +29,9 @@ export class UserWService {
 	errorFormPartner:boolean;
 	errorFormSendSale:boolean;
 	errorFormSendOrder:boolean;
+	errorFormOne:boolean;
+	errorFormTwo:boolean;
+	errorFormThree:boolean;
 	errorFormPago:boolean;
 	feet:number=0;
 	file:any[]=[];
@@ -51,6 +54,7 @@ export class UserWService {
 	pedido:any={};
 	partner:boolean;
 	queue:any[]=[];
+	quote:any={};
 	recargo:boolean=false;
 	selectorA:boolean;
 	selectorB:boolean;

@@ -9,29 +9,22 @@ import { FormBuilder,FormGroup, Validators  } from '@angular/forms';
 import { isError } from "util";
 import { ToastrService } from 'ngx-toastr';
 @Component({
-  selector: 'app-s-llc',
-  templateUrl: './s-llc.component.html',
-  styleUrls: ['./s-llc.component.css']
+  selector: 'app-s-itin',
+  templateUrl: './s-itin.component.html',
+  styleUrls: ['./s-itin.component.css']
 })
-export class SLlcComponent implements OnInit {
+export class SItinComponent implements OnInit {
   ngFormOne: FormGroup;
   ngFormTwo: FormGroup;
-  ngFormThree: FormGroup;
   public isError = false;
   public isError2 = false;
-  public isError3 = false;
   
   text="¿Qué tipo de empresa eres?";
   steep=0;
   isLogged = false;
   submitted = false;
   submitted2 = false;
-  submitted3 = false;
-  userType="";
-  firstSteep = [
-    { companyName: '', industry: '', description: '' },
-   
-];
+  userType=""
   public user : UserInterface ={
     email:"",
     userType:"",
@@ -66,9 +59,7 @@ get fval() {
 get fval2() {
   return this.ngFormTwo.controls;
   }
-get fval3() {
-  return this.ngFormThree.controls;
-  }
+
 public checkOne(){
   this.submitted = true;
   if (this.ngFormOne.invalid) {
@@ -91,35 +82,35 @@ public checkTwo(){
       this._uw.errorFormTwo=true;
     return;
         } 
-      this.next(1);
+      this.proccess();
     }
-public checkThree(){
-      this.submitted3 = true;
-      if (this.ngFormThree.invalid) {
-        this._uw.errorFormThree=true;
-      return;
-          }      
-          this.proccess();  
-      }
+
 public  back(i:any){
    if(i>0 ){this.steep=i-1}
   }
   public updateCard(){
-    this._uw.card.statusLlc="proccess"; 
+    this._uw.card.statusItin="proccess"; 
     this.dataApiService.updateCard(this._uw.card,this._uw.card.id).subscribe();
   }
 public proccess (){
-  this._uw.quote.companyName=this.ngFormOne.value.companyName;
-  this._uw.quote.companyAddress=this.ngFormTwo.value.companyAddress;
-  this._uw.quote.associateName=this.ngFormTwo.value.associateName;
-  this._uw.quote.associateAddress =this.ngFormTwo.value.associateAddress;
-  this._uw.quote.liableName=this.ngFormThree.value.liableName;
-  this._uw.quote.liablePhone=this.ngFormThree.value.liablePhone;
-  this._uw.quote.liableEmail=this.ngFormThree.value.liableEmail;
+  this._uw.quote.name =this.ngFormOne.value.name;
+  this._uw.quote.surName =this.ngFormOne.value.surName;
+  this._uw.quote.email =this.ngFormOne.value.email;
+  this._uw.quote.phone =this.ngFormOne.value.phone;
+  this._uw.quote.localAddress =this.ngFormOne.value.localAddress;
+  this._uw.quote.externalAddress =this.ngFormOne.value.externalAddress;
+  
+  this._uw.quote.country =this.ngFormTwo.value.country;
+  this._uw.quote.city =this.ngFormTwo.value.city;
+  this._uw.quote.gender =this.ngFormTwo.value.gender;
+  this._uw.quote.passportNumber =this.ngFormTwo.value.passportNumber;
+  this._uw.quote.countryExp =this.ngFormTwo.value.countryExp;
+  this._uw.quote.expirateDate =this.ngFormTwo.value.expirateDate;
+  this._uw.quote.lastTime =this.ngFormTwo.value.lastTime;
   this.dataApiService.saveQuote(this._uw.quote) .subscribe(
     quote => 
     {
-    console.log("solicitud llc enviada")
+    console.log("solicitud itin enviada")
     //this.waiting=false
     //this.successform=true
     this.showSuccess()
@@ -141,19 +132,21 @@ onCheckUser(): void {
 public next(i:any){this.steep=i+1;console.log("steep "+this.steep);}
   ngOnInit() {
     this.ngFormOne = this.formBuilder.group({
-      companyName: ['', [Validators.required]],
-       description: ['', [Validators.required]]
+      name: ['', [Validators.required]],
+       surName: ['', [Validators.required]],
+       email: ['', [Validators.required]],
+       phone: ['', [Validators.required]],
+       localAddress: ['', [Validators.required]],
+       externalAddress: ['', [Validators.required]]
       });
     this.ngFormTwo = this.formBuilder.group({
-      companyAddress: ['', [Validators.required]],
-        recipientAddress: ['', [Validators.required]],
-        associateName: ['', [Validators.required]],
-        associateAddress: ['', [Validators.required]]
-      });
-    this.ngFormThree = this.formBuilder.group({
-      liableName: ['', [Validators.required]],
-        liablePhone: ['', [Validators.required]],
-        liableEmail: ['', [Validators.required]]
+      country: ['', [Validators.required]],
+        city: ['', [Validators.required]],
+        gender: ['', [Validators.required]],
+        passportNumber: ['', [Validators.required]],
+        countryExp: ['', [Validators.required]],
+        expirateDate: ['', [Validators.required]],
+        lastTime: ['', [Validators.required]]
       });
 
     this.steep=0;

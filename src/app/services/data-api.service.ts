@@ -8,6 +8,7 @@ import { SaleInterface } from '../models/sale-interface';
 import { OrderInterface } from '../models/order-interface';
 import { CardInterface } from '../models/card-interface';
 import { InfoInterface } from '../models/info-interface';
+import { QuoteInterface } from '../models/quote-interface';
 import { UserWService } from "./user-w.service";
 
 @Injectable({
@@ -21,6 +22,7 @@ export class DataApiService {
 	tix: Observable<any>;
 	sale: Observable<any>;
 	order: Observable<any>;
+	quote: Observable<any>;
   constructor(
   	public _uw:UserWService,
   	private http: HttpClient, 
@@ -44,6 +46,12 @@ export class DataApiService {
  		getTamano(){
 		const url_api = 'https://db.buckapi.com:3070/api/tixes?filter[where][status]=activated';
 		return (this.tixs = this.http.get(url_api));
+	}
+	saveQuote(quote :QuoteInterface){
+		const url_api='https://db.buckapi.com:3070/api/quotes';
+		return this.http
+		.post<QuoteInterface>(url_api, quote)
+		.pipe(map(data => data));
 	}
 	getTamanoIni(){
 		const url_api = 'https://db.buckapi.com:3070/api/tixes?filter[where][initload]=activated';
@@ -96,12 +104,27 @@ sendMailNewBookAppToAdmin(book){
 		.put<OrderInterface>(url_api, order)
 		.pipe(map(data => data));
 	}
+	updateCard(card :CardInterface, id: string){
+		// let token = this.authService.getToken();
+		const url_api=`https://db.buckapi.com:3070/api/card/${id}`;
+		return this.http
+		.put<CardInterface>(url_api, card)
+		.pipe(map(data => data));
+	}
 	getCardByUserd(userd: string){
 		const url_api = `https://db.buckapi.com:3070/api/card?filter[where][userd]=${userd}`;
 		return this.http.get(url_api);
 	}
 	getOrderByNpedido(npedido: string){
 		const url_api = `https://db.buckapi.com:3070/api/order?filter[where][npedido]=${npedido}`;
+		return this.http.get(url_api);
+
+		// return this.http.get(url_api);
+
+		// return this.http.get(url_api);
+	}
+	getQuoteByUserd(userd: string){
+		const url_api = `https://db.buckapi.com:3070/api/quote?filter[where][userd]=${userd}`;
 		return this.http.get(url_api);
 
 		// return this.http.get(url_api);

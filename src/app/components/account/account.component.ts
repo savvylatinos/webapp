@@ -17,6 +17,7 @@ export class AccountComponent implements OnInit {
   text="¿Qué tipo de empresa eres?";
   steep=0;
   isLogged = false;
+  waiting=false;
   id="";
   public cardsResult:any[]=[];
 
@@ -64,10 +65,18 @@ public loadCard(){
     );
   }
 }
+
 public next(i:any){this.steep=i+1}
   ngOnInit() {
+    this.info=null;
+    this.user=null;
+    this.waiting=true;
     this.user = this.authService.getCurrentUser();
-    this.loadCard();
+    setTimeout(() => {
+      this.loadCard();
+      this.waiting=false;
+    }, 4000);
+    
     this.getInfo();
     this.steep=0;
     this.onCheckUser() ;

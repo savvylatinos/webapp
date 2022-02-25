@@ -49,6 +49,13 @@ import { ToastrModule } from 'ngx-toastr';
 import { AccountComponent } from './components/account/account.component';
 import { LoginComponent } from './components/login/login.component';
 import { SLlcComponent } from './components/s-llc/s-llc.component';
+import { SCorpComponent } from './components/s-corp/s-corp.component';
+import { SItinComponent } from './components/s-itin/s-itin.component';
+import { SEinComponent } from './components/s-ein/s-ein.component';
+import { SArComponent } from './components/s-ar/s-ar.component';
+import { SDunsComponent } from './components/s-duns/s-duns.component';
+import { STaxComponent } from './components/s-tax/s-tax.component';
+import { SFdaComponent } from './components/s-fda/s-fda.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +64,14 @@ import { SLlcComponent } from './components/s-llc/s-llc.component';
     RegisterComponent,
     AccountComponent,
     LoginComponent,
-    SLlcComponent
+    SLlcComponent,
+    SCorpComponent,
+    SItinComponent,
+    SEinComponent,
+    SArComponent,
+    SDunsComponent,
+    STaxComponent,
+    SFdaComponent
     ],
   imports: [
    

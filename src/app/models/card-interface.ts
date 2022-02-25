@@ -11,6 +11,7 @@ export interface CardInterface{
 	username?:string;
 	surname?:string;
 	country?:string;
+	route?:string;
 	city?:string;
 	status?:string;
 	images?:Array<string>;

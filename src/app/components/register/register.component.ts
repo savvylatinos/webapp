@@ -53,6 +53,7 @@ public msgError = '';
       status:"",
       images:[],
       services:[],
+      route:"",
       userd:"",
       phone:""
     }; 

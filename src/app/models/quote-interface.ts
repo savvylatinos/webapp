@@ -1,0 +1,39 @@
+export interface QuoteInterface {
+	type?:string;
+	status?:string;
+    companyName?:string;	
+    description?:string;	
+    companyAddress?:string;	
+    recipientAddress?:string;	
+    associateName?:string;	
+    associateAddress?:string;	
+    liableName?:string;	
+    liablePhone?:string;	
+    liableEmail?:string;	
+
+    state?:string;	
+    actionsNumber?:number;
+    directorName?:string;	
+    directorAddress?:string;
+    secretaryName?:string;	
+    secretaryAddress?:string;
+    presidentName?:string;	
+    presidentAddress?:string;
+    treasurerName?:string;	
+    treasurerAddress?:string;
+    liableAddress?:string;
+
+    name?:string;
+    surName?:string;
+    email?:string;
+    phone?:string;
+    localAddress?:string;
+    externalAddress?:string;
+    country?:string;
+    city?:string;
+    gender?:string;
+    passportNumber?:string;
+    countryExp?:string;
+    expirateDate?:string;
+    lastTime?:string;
+}
