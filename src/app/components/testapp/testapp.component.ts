@@ -17,7 +17,10 @@ export class TestappComponent implements OnInit {
   public dataApi: DataApiService
      ) { }
      loadAPI = null;  
-     public info:InfoInterface;
+     public info:InfoInterface={
+      type:"",
+      services:[],
+    };
   url = "assets/assetssavvy/js/latinos.js";
 
      public tixs:TixInterface;
@@ -35,7 +38,7 @@ export class TestappComponent implements OnInit {
     console.log(this.info);
   }
   ngOnInit() {
-//    this.info[0].services=["null"];
+   this.info[0]=["null"];
     if (this._uw.loaded==true){
       this.loadAPI = new Promise(resolve => {
         this.loadScript();
